@@ -1,1 +1,94 @@
 
+A. Batson (28067), A. Akuri (29630), G. Ciobanu (29427)
+
+====== Building Energy-Use Optimization ======
+Smart rooms
+
+
+==== 1.0 Introduction =====
+As the urgency to mitigate and combat climate change grows, more and more solutions are required to forder a more sustainable world. On the radar for these solutions, energy conservation and consumption reduction techniques comprise a significant measure in realizing greater sustainability in home & industry (Mahiri et al. 2022). However, one of the greatest limitations in realizing these developments is human contingent, for example forgetting to turn/off lights and heating. This project targets energy-use optimization by smart control of lights and heating use in prototye designed to simplify a room in a building.  
+
+The 'brains' of this project will be the ESP32 microcontroller. This inexpensive controller is a great fit for the project due to its ability to handle different types of sensors and later tramsit data values to databases via WiFi, where observations and monitoring can be remotely controlled. 
+
+An LDR photo resistor takes light value data. Depending on threshold values LEDs will be turned on and off so that natural light utilization will be more when conditions outside are bright. A DHT11 sensor works similarly, in taking room temperature data, which determine the switching on/off of a ventilator, used to represent an AC unit. 
+
+==== 2.0 Materials & Method ====  
+
+=== 2.1 Materials & Software ===
+  *  Arduino UNO 
+  *  ESP32 Connection & MQTT
+  *  LDR Photoresistor
+  *  DHT11 Temperature Sensor
+  *  SPDT Relay
+  
+
+  *  Node-Red
+  *  InfluxDB
+  *  Grafana
+(Text in this section can be hyperlinked)
+
+
+=== 2.1.1 ESP32 & Wi-Fi Connection ===
+
+The ESP32 is a special microcontroller. They pack an outstanding 2.4GHz Wi-Fi and Bluetooth combined system chip which is also designed with ultra low power consumption technology. It has quite a few other interesting benefits for optimum functionability and RF performance. It is robust, versatile and reliable within a wide array of scenarios and uses. Some of the interesting things you can use ESP32 for are building web servers, it comes with classic and also low energy Bluetooth, the LoRa technology, it can work with MQTT and even remote control a car robot among many other things (Espressif Systems, ESP32 Series Datasheet) 
+=== 2.1.2 LDR Photoresistor ===
+
+A Photoresistor Light dependent resistor (LDR) is an electronic device which is used in an electronic circuit to detect and measure the presence and level of light intensity.
+These LDRs are specifically designed for the purpose of light sensitivity detection and the change in the resistance this creates, which differentiates them from other resistors like the carbon film resistor or the metal oxide film resistor, hence increasing their importance in an electrical circuit.
+The LDR comes with a lot of advantages; it is cheap, readily available, easy to use and also easy to manufacture. They are made from semiconductor materials allowing them to have light sensitive properties. The simple structure and labeled parts of an LDR can be seen in figure 1.
+
+The way the LDR works is simple. When light makes contact with the upper surface it cause a change in resistance. This resistance is measured in Ohms.
+
+For our project, we recalibrated the LDR with a luxmeter to obtain values in lux, which we thought was a better unit to apply to  visualize the light readings of the project. Compared to ohms it felt more intuitive. This development is annotated in the code in teh `Results` section of the document.
+
+== 2.1.3 DHT11 Temperature Sensor ==
+{{:amc2022:groupd:dht_11.png?direct&400|}} {{ |This is the caption}}
+
+The DHT11 it is a simple effective but inexpensive temperature and humidity sensor. It is made up of features that measure analog signals and converts them into temperature and humidity values. This means they are quite intuitive and easy to connect to a microcontroller. Amongst all these benefits, it also is a lower power consumption device and has reliable long term stability. (D. Srivastava et. al. 2018)
+
+**Specifications** 
+  * Temperature range: 0 to 50ºC +/- 2ºC
+  * Relative humidity range: 20 to 90% +/-5%
+  * Temperature resolution: 1ºC
+  * Humidity resolution: 1%
+  * Operating voltage: 3 to 5.5 V DC
+  * Current supply: 0.5 to 2.5 mA
+  * Sampling period: 1 second
+
+
+=== 2.1.4  SPDT Relay ===
+== 2.1.5 Software Packages == 
+
+The programming tool Node-Red that uses a browser-based flow editor to wire together hardware devices, APIs and online services.
+InfluxDB is a time series database built specifically for storing time series data. It was used along with Grafana.
+Grafana is a time series data visualization tools.It provides charts, graphs, and alerts for the web when connected to supported data sources.
+
+
+=== 2.2 Method ===
+
+In the beginning of the project, many of the sensors and tools were clearly used, and parts were missing from the kit. In order to confirm the functionality of the sensors and the microcontrollers, as well as wires and resistors, we set out to test individual components with the arduino UNO board. The idea behind was to able the streamlining of debugging by narrowing the troubleshooting efforts required later when using the esp32.
+
+=== 2.2.1 Pre-testing Phase === 
+All pretesting was conducted with Arduino UNO as it was a more familiar controller, with familiar ports and specifications. 
+
+== 2.2.1.1 DHT 11 ==
+ 
+{{:amc2020:group_f:20160425-dht11_v1.0_steckplatine.jpg?direct&400|}}
+''https://www.bastelgarage.ch/image/catalog/Blog/1_DHT11/20160425-DHT11_V1.0_Steckplatine.jpg''
+== Code ==
+
+== 2.2.1.2 LDR Photoresistor ==
+
+== Code == 
+==== 3.0 Results ====
+== 3.1 Schematics ==
+
+== 3.2 Code ==
+
+== 3.3 Serial Monitor, Graphana and Node-Red ==
+==== 4.0 Discussion ====
+
+==== 5.0 Literature References ====
+Mahiri, F., Najoua, A., & Ben Souda, S. (2022). 5G-Enabled IIoT Framework Architecture Towards Sustainable Smart Manufacturing. In International Journal of Online & Biomedical Engineering; 2022, Vol (Bd. 16, Nummer 4, S. 4–20). https://doi.org/10.3991/ijoe.v18i04.27753
+
+ D. Srivastava, A. Kesarwani, S. Dubey(2018) Measurement of Temperature and Humidity by using Arduino Tool and DHT11 Department of Computer Applications, JSS Academy of Technical Education, Noida, India
